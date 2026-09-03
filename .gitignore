@@ -30,3 +30,7 @@ htmlcov/
 # Local data
 data/*
 !data/.gitkeep
+# Local database
+*.db
+*.sqlite
+*.sqlite3
