@@ -1,4 +1,7 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import (
+    BaseSettings,
+    SettingsConfigDict,
+)
 
 
 class Settings(BaseSettings):
@@ -7,7 +10,25 @@ class Settings(BaseSettings):
     environment: str = "development"
     debug: bool = True
 
-    database_url: str = "sqlite:///./sre_triage.db"
+    database_url: str = ""
+
+    gemini_api_key: str = ""
+    ai_model: str = "gemini-2.5-flash"
+    ai_enabled: bool = True
+
+    jwt_secret_key: str = (
+        "change-this-in-production"
+    )
+
+    jwt_algorithm: str = "HS256"
+
+    access_token_expire_minutes: int = 60
+
+    # ServiceNow
+    servicenow_url: str = ""
+    servicenow_username: str = ""
+    servicenow_password: str = ""
+    servicenow_enabled: bool = False
 
     model_config = SettingsConfigDict(
         env_file=".env",

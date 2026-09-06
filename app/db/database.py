@@ -4,22 +4,21 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker
 from app.config import settings
 
 
-DATABASE_URL = getattr(
-    settings,
-    "database_url",
-    "sqlite:///./sre_triage.db",
-)
+DATABASE_URL = settings.database_url
 
 
 connect_args = {}
 
 if DATABASE_URL.startswith("sqlite"):
-    connect_args = {"check_same_thread": False}
+    connect_args = {
+        "check_same_thread": False,
+    }
 
 
 engine = create_engine(
     DATABASE_URL,
     connect_args=connect_args,
+    pool_pre_ping=True,
 )
 
 
