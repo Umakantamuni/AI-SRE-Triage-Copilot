@@ -1,4 +1,4 @@
-from pydantic_settings import (
+﻿from pydantic_settings import (
     BaseSettings,
     SettingsConfigDict,
 )
@@ -10,21 +10,16 @@ class Settings(BaseSettings):
     environment: str = "development"
     debug: bool = True
 
-    database_url: str = ""
+    database_url: str = "postgresql+psycopg2://postgres:Dilu123@localhost:5432/ai_sre_triage"
 
     gemini_api_key: str = ""
     ai_model: str = "gemini-2.5-flash"
     ai_enabled: bool = True
 
-    jwt_secret_key: str = (
-        "change-this-in-production"
-    )
-
+    jwt_secret_key: str = "change-this-in-production"
     jwt_algorithm: str = "HS256"
-
     access_token_expire_minutes: int = 60
 
-    # ServiceNow
     servicenow_url: str = ""
     servicenow_username: str = ""
     servicenow_password: str = ""
